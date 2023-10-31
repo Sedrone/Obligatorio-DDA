@@ -11,7 +11,7 @@ public class Tecnico extends Persona implements Salario{
 
     public Tecnico(int cedula, String nombre, String apellido, double sueldo, String equipo) {
         super(cedula, nombre, apellido, sueldo);
-        this.equipo = equipo;
+        this.equipo = equipo.toUpperCase();
     }
 
     @Override

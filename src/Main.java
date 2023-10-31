@@ -1,7 +1,9 @@
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.time.*;
 public class Main {
     static List<Jugador> listaJugadores = new ArrayList<>();
     static List<Arbitro> listaArbitros = new ArrayList<>();
@@ -508,13 +510,13 @@ public class Main {
                         agregarPartido();
                         break;
                     case 2:
-                        eliminarPartido();
+                        //eliminarPartido();
                         break;
                     case 3:
-                        modificarPartido();
+                        //modificarPartido();
                         break;
                     case 4:
-                        mostrarListaPartidos();
+                        //mostrarListaPartidos();
                         break;
                     case 5:
                         salir = true;
@@ -536,12 +538,16 @@ public class Main {
         List<Jugador> jugadoresSeleccionadosEquipo2 = new ArrayList<>();
         List<Jugador> jugadoresPosibleEquipo1 = new ArrayList<>();
         List<Jugador> jugadoresPosibleEquipo2 = new ArrayList<>();
+        List<Tecnico> tecnicoPosible1 = new ArrayList<>();
+        List<Tecnico> tecnicoPosible2 = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese los datos del partido :");
         System.out.print("Id: ");
         int id = scanner.nextInt();
         System.out.print("Fecha: ");
         String fecha = scanner.nextLine();
+        System.out.print("Hora: ");
+        String Hora = scanner.nextLine();
         System.out.print("1er Equipo: ");
         String equipo1 = scanner.nextLine().toUpperCase();
         for (Jugador unJ: listaJugadores) {
@@ -562,21 +568,175 @@ public class Main {
             }
             if (jugadoresPosibleEquipo2.size() <= 4){
                 System.out.println("El equipo no tiene suficientes jugadores");
-            }else {
-                System.out.print("Ganador (Si lo hay): ");
+            } else {
+                    System.out.print("Ganador (Si lo hay): ");
                 String ganador = scanner.nextLine();
                 System.out.println("Arbitros posibles");
                 for (Arbitro unA : listaArbitros) {
                     System.out.println(unA.toString());
                 }
                 System.out.print("Arbitro (Cedula): ");
-                String arbitro = scanner.nextLine().toUpperCase();
+                int arbitro = scanner.nextInt();
 
-
-                scanner.nextLine();
-
-
+                System.out.println("Ingrese los titulares del primer equipo.\n");
+                for (int i = 0; i < 5; i++) {
+                    int contador = 1;
+                    for (Jugador unJ : jugadoresPosibleEquipo1) {
+                        System.out.println(contador + ". " + unJ.getNombre() + " " + unJ.getApellido());
+                        contador++;
+                    }
+                    System.out.println("Ingrese la posicion en la lista del jugador a agregar");
+                    int eleccion = scanner.nextInt();
+                    if (eleccion > jugadoresPosibleEquipo1.size() || eleccion < jugadoresPosibleEquipo1.size()) {
+                        System.out.println("Ese jugador no existe");
+                        i--;
+                    } else {
+                        jugadoresSeleccionadosEquipo1.add(jugadoresPosibleEquipo1.get(eleccion - 1));
+                        jugadoresPosibleEquipo1.remove(eleccion - 1);
+                    }
+                }
+                System.out.println("Los titulares del equipo " + equipo1 +  " son: ");
+                int contador = 1;
+                for (Jugador unJ : jugadoresPosibleEquipo1) {
+                    System.out.println(contador + ". " + unJ.getNombre() + " " + unJ.getApellido());
+                    contador++;
+                }
+                if (!jugadoresPosibleEquipo1.isEmpty()){
+                    System.out.println("Quiere ingresar los suplentes del equipo 1?");
+                    System.out.println("1. Si");
+                    System.out.println("2. No");
+                    if (scanner.nextInt() == 1){
+                        for (Jugador unJ: jugadoresPosibleEquipo1) {
+                            System.out.println("Desea agregar el jugador " + unJ.getNombre() + " " + unJ.getApellido() + " como suplente?");
+                            System.out.println("1. Si");
+                            System.out.println("2. No");
+                            if(scanner.nextInt() == 1) {
+                                jugadoresSeleccionadosEquipo1.add(unJ);
+                            }
+                        }
+                    }
+                }
+                else{
+                    System.out.println("no hay jugadores suficientes para agregar de suplentes");
+                }
+                if (jugadoresSeleccionadosEquipo1.size() >= 6) {
+                    System.out.println("Los suplentes del equipo " + equipo1 + " son: \n");
+                    Jugador sup1 = jugadoresSeleccionadosEquipo1.get(5);
+                    System.out.println("Suplente 1: " +sup1.getNombre() + " " + sup1.getApellido());
+                    try {
+                        Jugador sup2 = jugadoresSeleccionadosEquipo1.get(6);
+                        System.out.println("Suplente 2: " +sup2.getNombre() + " " + sup2.getApellido());
+                    }
+                    catch (Exception e){}
+                }
+                System.out.println("Ingrese los titulares del segundo equipo.\n");
+                for (int i = 0; i < 5; i++) {
+                    contador = 1;
+                    for (Jugador unJ : jugadoresPosibleEquipo2) {
+                        System.out.println(contador + ". " + unJ.getNombre() + " " + unJ.getApellido());
+                        contador++;
+                    }
+                    System.out.println("Ingrese la posicion en la lista del jugador a agregar");
+                    int eleccion = scanner.nextInt();
+                    if (eleccion > jugadoresPosibleEquipo2.size() || eleccion < jugadoresPosibleEquipo2.size()) {
+                        System.out.println("Ese jugador no existe");
+                        i--;
+                    } else {jugadoresSeleccionadosEquipo2
+                            .add(jugadoresPosibleEquipo2.get(eleccion - 1));
+                        jugadoresPosibleEquipo2.remove(eleccion - 1);
+                    }
+                }
+                System.out.println("Los titulares del equipo " + equipo2 +  " son: ");
+                contador = 1;
+                for (Jugador unJ : jugadoresPosibleEquipo2) {
+                    System.out.println(contador + ". " + unJ.getNombre() + " " + unJ.getApellido());
+                    contador++;
+                }
+                if (!jugadoresPosibleEquipo2.isEmpty()){
+                    System.out.println("Quiere ingresar los suplentes del equipo 1?");
+                    System.out.println("1. Si");
+                    System.out.println("2. No");
+                    if (scanner.nextInt() == 1){
+                        for (Jugador unJ: jugadoresPosibleEquipo2) {
+                            System.out.println("Desea agregar el jugador " + unJ.getNombre() + " " + unJ.getApellido() + " como suplente?");
+                            System.out.println("1. Si");
+                            System.out.println("2. No");
+                            if(scanner.nextInt() == 1) {
+                                jugadoresSeleccionadosEquipo2.add(unJ);
+                            }
+                        }
+                    }
+                }
+                else{
+                    System.out.println("no hay jugadores suficientes para agregar de suplentes");
+                }
+                if (jugadoresSeleccionadosEquipo2.size() >= 6) {
+                    System.out.println("Los suplentes del equipo " + equipo2 + " son: \n");
+                    Jugador sup1 = jugadoresSeleccionadosEquipo2.get(5);
+                    System.out.println("Suplente 1: " +sup1.getNombre() + " " + sup1.getApellido());
+                    try {
+                        Jugador sup2 = jugadoresSeleccionadosEquipo2.get(6);
+                        System.out.println("Suplente 2: " +sup2.getNombre() + " " + sup2.getApellido());
+                    }
+                    catch (Exception e){}
+                }
+                for (Tecnico unT: listaTecnico) {
+                    if (unT.getEquipo().equals(equipo1)){
+                        tecnicoPosible1.add(unT);
+                    }
+                    if (unT.getEquipo().equals(equipo2)){
+                        tecnicoPosible2.add(unT);
+                    }
+                }
+                System.out.println("Los tecnicos posibles del 1er equipo son: ");
+                for (int i = 1; i < tecnicoPosible1.size() + 1; i++) {
+                    for (Tecnico unT : tecnicoPosible1) {
+                        System.out.println(i + ". " + unT.getNombre() + " " + unT.getApellido());
+                    }
+                }
+                boolean true1 = false;
+                Tecnico tEquipo1 = null;
+                while (!true1) {
+                    System.out.println("Ingrese la posicion en la lista del Tecnico a agregar");
+                    int eleccion = scanner.nextInt();
+                    if (eleccion > tecnicoPosible1.size() || eleccion < tecnicoPosible1.size()) {
+                        System.out.println("Ese tecnico no existe");
+                    } else {
+                        tEquipo1 = tecnicoPosible1.get(eleccion - 1);
+                        true1 = true;
+                    }
+                }
+                System.out.println("Los tecnicos posibles del 2do equipo son: ");
+                for (int i = 1; i < tecnicoPosible2.size() + 1; i++) {
+                    for (Tecnico unT : tecnicoPosible2) {
+                        System.out.println(i + ". " + unT.getNombre() + " " + unT.getApellido());
+                    }
+                }
+                boolean true2 = false;
+                Tecnico tEquipo2 = null;
+                while (!true2) {
+                    System.out.println("Ingrese la posicion en la lista del Tecnico a agregar");
+                    int eleccion = scanner.nextInt();
+                    if (eleccion > tecnicoPosible2.size() || eleccion < tecnicoPosible2.size()) {
+                        System.out.println("Ese tecnico no existe");
+                    } else {
+                        tEquipo2 = tecnicoPosible2.get(eleccion - 1);
+                        true2 = true;
+                    }
+                }
+                String fechaYHora = fecha.trim() + " " + Hora.trim();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                LocalDateTime dateTime = LocalDateTime.parse(fechaYHora, formatter);
+                Arbitro arbitroP = null;
+                for (Arbitro unB: listaArbitros) {
+                    if (unB.getCedula() == arbitro){
+                        arbitroP = unB;
+                    }
+                }
+                Partido unP = new Partido(id, dateTime, equipo1, equipo2, ganador, arbitroP, tEquipo1, tEquipo2, jugadoresSeleccionadosEquipo1, jugadoresSeleccionadosEquipo2);
+                System.out.println("Partido ingresado con exito");
             }
         }
+                scanner.nextLine();
+        }
     }
-}
