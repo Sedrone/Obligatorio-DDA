@@ -1,4 +1,4 @@
-public class Persona {
+public abstract class  Persona {
     private int cedula;
     private String Nombre;
     private String Apellido;

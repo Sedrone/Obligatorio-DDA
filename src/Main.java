@@ -74,7 +74,7 @@ public class Main {
             System.out.print("Posicion: ");
             String Posicion = scanner.nextLine();
             System.out.print("Equipo: ");
-            String Equipo = scanner.nextLine();
+            String Equipo = scanner.nextLine().toUpperCase();
             System.out.print("Minutos Jugados: ");
             int minutos = scanner.nextInt();
             scanner.nextLine();
@@ -88,6 +88,10 @@ public class Main {
                 System.out.print("Ingrese la cedula a eliminar: ");
                 int cedula = scanner.nextInt();
                 scanner.nextLine();
+                System.out.println("Personas disponibles para eliminar");
+                for (Jugador unJugador : listaJugadores) {
+                    System.out.println(unJugador.toString());
+                }
 
                 Jugador Jugadorcedula = null;
                 for (Jugador unJugador : listaJugadores) {
@@ -109,6 +113,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese la cedula del jugador a modificar: ");
         int cedulaModificar = scanner.nextInt();
+        System.out.println("Personas disponibles para modificar");
+        for (Jugador unJugador : listaJugadores) {
+            System.out.println(unJugador.toString());
+        }
         scanner.nextLine();
 
         Jugador jugadorModificar = null;
@@ -264,6 +272,10 @@ public class Main {
         System.out.print("Ingrese la cedula a eliminar: ");
         int cedula = scanner.nextInt();
         scanner.nextLine();
+        System.out.println("Personas disponibles para eliminar");
+        for (Arbitro unA : listaArbitros) {
+            System.out.println(unA.toString());
+        }
 
         Arbitro ArbitroCedula = null;
         for (Arbitro unArbitro : listaArbitros) {
@@ -285,6 +297,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese la cedula del arbitro a modificar: ");
         int cedulaModificar = scanner.nextInt();
+        System.out.println("Personas disponibles para modificar");
+        for (Arbitro unA : listaArbitros) {
+            System.out.println(unA.toString());
+        }
         scanner.nextLine();
 
         Arbitro arbitroMod = null;
@@ -325,7 +341,7 @@ public class Main {
 
     static void mostrarListaArbitros() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Lista de Jugadores:");
+        System.out.println("Lista de Arbitros:");
         for (Arbitro unArbitro : listaArbitros) {
             System.out.println(unArbitro.toString());
         }
@@ -399,6 +415,10 @@ public class Main {
         System.out.print("Ingrese la cedula a eliminar: ");
         int cedula = scanner.nextInt();
         scanner.nextLine();
+        System.out.println("Personas disponibles para eliminar");
+        for (Tecnico unTec : listaTecnico) {
+            System.out.println(unTec.toString());
+        }
 
         Tecnico TecnicoCedula = null;
         for (Tecnico unTecnico : listaTecnico) {
@@ -420,6 +440,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese la cedula del tecnico a modificar: ");
         int cedulaModificar = scanner.nextInt();
+        System.out.println("Personas disponibles para modificar");
+        for (Tecnico unTec : listaTecnico) {
+            System.out.println(unTec.toString());
+        }
         scanner.nextLine();
 
         Tecnico TecnicoMod = null;
@@ -448,10 +472,111 @@ public class Main {
             TecnicoMod.setApellido(nuevoApellido);
             TecnicoMod.setSueldo(nuevaSueldo);
             TecnicoMod.setEquipo(nuevoEquipo);
-            listaTecnico.add(TecnicoMod);
 
+            listaTecnico.add(TecnicoMod);
         } else {
             System.out.println("Cedula no encontrado. \n");
+        }
+    }
+
+    static void mostrarListaTecnicos() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Lista de Tecnicos:");
+        for (Tecnico unTec : listaTecnico) {
+            System.out.println(unTec.toString());
+        }
+    }
+
+    public void gestionPartidos() {
+        boolean salir = false;
+        while (!salir) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("\nGestión Partidos\n");
+            System.out.println("1. Crear partido");
+            System.out.println("2. Eliminar partido");
+            System.out.println("3. Modificar partido");
+            System.out.println("4. Mostrar partidos");
+            System.out.println("5. Salir");
+            System.out.print("\nSeleccione una opción: ");
+
+            int opcion;
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+                switch (opcion) {
+                    case 1:
+                        agregarPartido();
+                        break;
+                    case 2:
+                        eliminarPartido();
+                        break;
+                    case 3:
+                        modificarPartido();
+                        break;
+                    case 4:
+                        mostrarListaPartidos();
+                        break;
+                    case 5:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Opción no válida. Intente de nuevo. \n");
+                        break;
+                }
+            } else {
+                System.out.println("Entrada no válida. Intente de nuevo. \n");
+                scanner.nextLine();
+            }
+
+        }
+    }
+
+    static void agregarPartido() {
+        List<Jugador> jugadoresSeleccionadosEquipo1 = new ArrayList<>();
+        List<Jugador> jugadoresSeleccionadosEquipo2 = new ArrayList<>();
+        List<Jugador> jugadoresPosibleEquipo1 = new ArrayList<>();
+        List<Jugador> jugadoresPosibleEquipo2 = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese los datos del partido :");
+        System.out.print("Id: ");
+        int id = scanner.nextInt();
+        System.out.print("Fecha: ");
+        String fecha = scanner.nextLine();
+        System.out.print("1er Equipo: ");
+        String equipo1 = scanner.nextLine().toUpperCase();
+        for (Jugador unJ: listaJugadores) {
+            if (unJ.getEquipo().equals(equipo1)){
+                jugadoresPosibleEquipo1.add(unJ);
+            }
+        }
+        if (jugadoresPosibleEquipo1.size() <= 4){
+            System.out.println("El equipo no tiene suficientes jugadores");
+        }
+        else {
+            System.out.print("2do Equipo: ");
+            String equipo2 = scanner.nextLine().toUpperCase();
+            for (Jugador unJ: listaJugadores) {
+                if (unJ.getEquipo().equals(equipo2)){
+                    jugadoresPosibleEquipo2.add(unJ);
+                }
+            }
+            if (jugadoresPosibleEquipo2.size() <= 4){
+                System.out.println("El equipo no tiene suficientes jugadores");
+            }else {
+                System.out.print("Ganador (Si lo hay): ");
+                String ganador = scanner.nextLine();
+                System.out.println("Arbitros posibles");
+                for (Arbitro unA : listaArbitros) {
+                    System.out.println(unA.toString());
+                }
+                System.out.print("Arbitro (Cedula): ");
+                String arbitro = scanner.nextLine().toUpperCase();
+
+
+                scanner.nextLine();
+
+
+            }
         }
     }
 }

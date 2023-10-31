@@ -18,4 +18,16 @@ public class Tecnico extends Persona implements Salario{
     public double calcularSalario(){
         return getSueldo();
     }
+
+    @Override
+    public String toString() {
+        return "Tecnico{" +
+                "Cedula: '" + super.getCedula() +
+                ", Nombre: '" + super.getNombre() +
+                ", Apellido: '" + super.getApellido() +
+                ", Sueldo base: '" + super.getSueldo() +
+                ", Sueldo con bonus: '" + calcularSalario() +
+                ", Equipo: '" + getEquipo() +
+                '}';
+    }
 }

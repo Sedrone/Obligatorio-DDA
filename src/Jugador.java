@@ -30,7 +30,7 @@ public class Jugador extends Persona implements Precalentar, Salario{
     public Jugador(int cedula, String nombre, String apellido, double sueldo, String posicion, String equipo, int minutosJugados) {
         super(cedula, nombre, apellido, sueldo);
         this.posicion = posicion;
-        this.equipo = equipo;
+        this.equipo = equipo.toUpperCase();
         this.minutosJugados = minutosJugados;
     }
 
@@ -41,5 +41,19 @@ public class Jugador extends Persona implements Precalentar, Salario{
     @Override
     public double calcularSalario(){
         return super.getSueldo()*1.2;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "Cedula: '" + super.getCedula() +
+                ", Nombre: '" + super.getNombre() +
+                ", Apellido: '" + super.getApellido() +
+                ", Sueldo base: '" + super.getSueldo() +
+                ", Sueldo con bonus: '" + calcularSalario() +
+                ", Posicion: '" + getPosicion() +
+                ", Equipo: '" + getEquipo() +
+                ", MinutosJugados: " + getMinutosJugados() +
+                '}';
     }
 }
