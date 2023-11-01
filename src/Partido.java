@@ -107,9 +107,9 @@ public class Partido {
         return "Partido: " + '\'' +
                 "Id: " + Id + '\'' +
                 ", Fecha: " + fecha.format(DateTimeFormatter.ISO_LOCAL_DATE) + '\'' +
-                ", Equipo 1: '" + equipo1 + '\'' +
-                ", Equipo 2: '" + equipo2 + '\'' +
-                ", Ganador: '" + ganador + '\'' +
+                ", Equipo 1: " + equipo1 + '\'' +
+                ", Equipo 2: " + equipo2 + '\'' +
+                ", Ganador: " + ganador + '\'' +
                 ", Arbitro: " + arbitro.toString() + '\'' +
                 ", Tecnico del equipo 1: " + TecEquipo1.toString() + '\'' +
                 ", Tecnico del equipo 2: " + TecEquipo2.toString();

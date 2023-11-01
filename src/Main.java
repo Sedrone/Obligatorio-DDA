@@ -15,11 +15,43 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (!salir) {
+            System.out.println("\nPagina Pricipal\n");
+            System.out.println("1. Gestion Jugadores");
+            System.out.println("2. Gestion Arbitros");
+            System.out.println("3. Gestion Tecnicos");
+            System.out.println("4. Gestion Partidos");
+            System.out.println("5. Salir");
+            System.out.print("\nSeleccione una opción: ");
 
+            int opcion;
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+                switch (opcion) {
+                    case 1:
+                        gestionJugador();
+                        break;
+                    case 2:
+                        gestionArbitro();
+                        break;
+                    case 3:
+                        gestionTecnicos();
+                        break;
+                    case 4:
+                        gestionPartidos();
+                        break;
+                    case 5:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Opción no válida. Intente de nuevo. \n");
+                        break;
+                }
+            }
         }
     }
 
-    public void gestionJugador() {
+    static public void gestionJugador() {
         boolean salir = false;
         while (!salir) {
             Scanner scanner = new Scanner(System.in);
@@ -27,7 +59,7 @@ public class Main {
             System.out.println("1. Agregar Jugador");
             System.out.println("2. Eliminar Jugador");
             System.out.println("3. Modificar Jugador");
-            System.out.println("4. Buscar Jugador por cedula");
+            System.out.println("4. Mostrar Jugadores");
             System.out.println("5. Salir");
             System.out.print("\nSeleccione una opción: ");
 
@@ -62,18 +94,21 @@ public class Main {
 
         }
     }
+
     static void agregarJugador() {
         Scanner scanner = new Scanner(System.in);
             System.out.println("Ingrese los datos del jugador :");
             System.out.print("Cedula: ");
             int cedula = scanner.nextInt();
             System.out.print("Nombre: ");
+            scanner.nextLine();
             String nombre = scanner.nextLine();
             System.out.print("Apellido: ");
             String apellido = scanner.nextLine();
             System.out.print("Sueldo: ");
             double sueldo = scanner.nextDouble();
             System.out.print("Posicion: ");
+            scanner.nextLine();
             String Posicion = scanner.nextLine();
             System.out.print("Equipo: ");
             String Equipo = scanner.nextLine().toUpperCase();
@@ -176,6 +211,7 @@ public class Main {
                 for (Jugador unJugador : listaJugadores) {
                     System.out.println(unJugador.toString());
                 }
+                break;
             case 2:
                 List<Jugador> listaJugadoresEquipo = new ArrayList<>();
                 System.out.print("Ingrese el nombre del equipo: ");
@@ -204,7 +240,7 @@ public class Main {
         }
     }
 
-    public void gestionArbitro() {
+    static public void gestionArbitro() {
         boolean salir = false;
         while (!salir) {
             Scanner scanner = new Scanner(System.in);
@@ -212,7 +248,7 @@ public class Main {
             System.out.println("1. Agregar Arbitro");
             System.out.println("2. Eliminar Arbitro");
             System.out.println("3. Modificar Arbitro");
-            System.out.println("4. Buscar Arbitro por cedula");
+            System.out.println("4. Mostrar Arbitros");
             System.out.println("5. Salir");
             System.out.print("\nSeleccione una opción: ");
 
@@ -254,8 +290,10 @@ public class Main {
         System.out.print("Cedula: ");
         int cedula = scanner.nextInt();
         System.out.print("Nombre: ");
+        scanner.nextLine();
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
+        scanner.nextLine();
         String apellido = scanner.nextLine();
         System.out.print("Sueldo: ");
         double sueldo = scanner.nextDouble();
@@ -349,7 +387,7 @@ public class Main {
         }
     }
 
-    public void gestionTecnicos() {
+    static public void gestionTecnicos() {
         boolean salir = false;
         while (!salir) {
             Scanner scanner = new Scanner(System.in);
@@ -357,7 +395,7 @@ public class Main {
             System.out.println("1. Agregar Tecnico");
             System.out.println("2. Eliminar Tecnico");
             System.out.println("3. Modificar Tecnico");
-            System.out.println("4. Buscar Tecnico por cedula");
+            System.out.println("4. Mostrar tecnicos");
             System.out.println("5. Salir");
             System.out.print("\nSeleccione una opción: ");
 
@@ -399,12 +437,15 @@ public class Main {
         System.out.print("Cedula: ");
         int cedula = scanner.nextInt();
         System.out.print("Nombre: ");
+        scanner.nextLine();
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
+        scanner.nextLine();
         String apellido = scanner.nextLine();
         System.out.print("Sueldo: ");
         double sueldo = scanner.nextDouble();
         System.out.print("Equipo: ");
+        scanner.nextLine();
         String Equipo = scanner.nextLine();
         scanner.nextLine();
 
@@ -489,7 +530,7 @@ public class Main {
         }
     }
 
-    public void gestionPartidos() {
+    static public void gestionPartidos() {
         boolean salir = false;
         while (!salir) {
             Scanner scanner = new Scanner(System.in);
@@ -510,13 +551,13 @@ public class Main {
                         agregarPartido();
                         break;
                     case 2:
-                        //eliminarPartido();
+                        eliminarPartido();
                         break;
                     case 3:
-                        //modificarPartido();
+                        modificarPartido();
                         break;
                     case 4:
-                        //mostrarListaPartidos();
+                        mostrarListaPartidos();
                         break;
                     case 5:
                         salir = true;
@@ -545,8 +586,10 @@ public class Main {
         System.out.print("Id: ");
         int id = scanner.nextInt();
         System.out.print("Fecha: ");
+        scanner.nextLine();
         String fecha = scanner.nextLine();
         System.out.print("Hora: ");
+        scanner.nextLine();
         String Hora = scanner.nextLine();
         System.out.print("1er Equipo: ");
         String equipo1 = scanner.nextLine().toUpperCase();
@@ -739,4 +782,81 @@ public class Main {
         }
                 scanner.nextLine();
         }
+
+    static void eliminarPartido() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese la id a eliminar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Partidos disponibles para eliminar");
+        for (Partido unP : listaPartidos) {
+            System.out.println(unP.getId() + " " + unP.getFecha());
+        }
+
+        Partido PId = null;
+        for (Partido unPartido : listaPartidos) {
+            if (unPartido.getId() == id) {
+                PId = unPartido;
+                break;
+            }
+        }
+
+        if (PId != null) {
+            listaPartidos.remove(PId);
+            System.out.println("Eliminado con exito el partido: " + PId.getId());
+        } else {
+            System.out.println("Id no encontrado. \n");
+        }
+    }
+
+    static void modificarPartido() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese la cedula del tecnico a modificar: ");
+        int cedulaModificar = scanner.nextInt();
+        System.out.println("Personas disponibles para modificar");
+        for (Tecnico unTec : listaTecnico) {
+            System.out.println(unTec.toString());
+        }
+        scanner.nextLine();
+
+        Tecnico TecnicoMod = null;
+        for (Tecnico unTec : listaTecnico) {
+            if (unTec.getCedula() == cedulaModificar) {
+                TecnicoMod = unTec;
+                break;
+            }
+        }
+
+        if (TecnicoMod != null) {
+            System.out.println("Datos actuales del Tecnico: " + TecnicoMod.toString());
+            System.out.println("Ingrese los nuevos datos:");
+            System.out.print("Nombre: ");
+            String nuevoNombre = scanner.nextLine();
+            System.out.print("Apellido: ");
+            String nuevoApellido = scanner.nextLine();
+            System.out.print("Sueldo: ");
+            double nuevaSueldo = scanner.nextDouble();
+            System.out.print("Equipo: ");
+            String nuevoEquipo = scanner.nextLine();
+            scanner.nextLine();
+            listaTecnico.remove(TecnicoMod);
+
+            TecnicoMod.setNombre(nuevoNombre);
+            TecnicoMod.setApellido(nuevoApellido);
+            TecnicoMod.setSueldo(nuevaSueldo);
+            TecnicoMod.setEquipo(nuevoEquipo);
+
+            listaTecnico.add(TecnicoMod);
+        } else {
+            System.out.println("Cedula no encontrado. \n");
+        }
+    }
+
+    static void mostrarListaPartidos() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Lista Partidos:");
+        for (Partido unPartido : listaPartidos) {
+            System.out.println(unPartido.toString());
+        }
+    }
     }

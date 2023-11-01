@@ -46,13 +46,13 @@ public class Jugador extends Persona implements Precalentar, Salario{
     @Override
     public String toString() {
         return "Jugador{" +
-                "Cedula: '" + super.getCedula() +
-                ", Nombre: '" + super.getNombre() +
-                ", Apellido: '" + super.getApellido() +
-                ", Sueldo base: '" + super.getSueldo() +
-                ", Sueldo con bonus: '" + calcularSalario() +
-                ", Posicion: '" + getPosicion() +
-                ", Equipo: '" + getEquipo() +
+                "Cedula: " + super.getCedula() +
+                ", Nombre: " + super.getNombre() +
+                ", Apellido: " + super.getApellido() +
+                ", Sueldo base: " + super.getSueldo() +
+                ", Sueldo con bonus: " + calcularSalario() +
+                ", Posicion: " + getPosicion() +
+                ", Equipo: " + getEquipo() +
                 ", MinutosJugados: " + getMinutosJugados() +
                 '}';
     }

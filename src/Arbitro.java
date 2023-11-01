@@ -46,13 +46,13 @@ public class Arbitro extends Persona implements Precalentar, Salario{
     @Override
     public String toString() {
         return "Jugador{" +
-                "Cedula: '" + super.getCedula() +
-                ", Nombre: '" + super.getNombre() +
-                ", Apellido: '" + super.getApellido() +
-                ", Sueldo base: '" + super.getSueldo() +
-                ", Cantidad de partidos arbitrados : '" + getCantDePartidosDirigidos() +
-                ", Años trabajados : '" + getAnostrabajados() +
-                ", Sueldo con bonus: '" + calcularSalario() +
+                "Cedula: " + super.getCedula() +
+                ", Nombre: " + super.getNombre() +
+                ", Apellido: " + super.getApellido() +
+                ", Sueldo base: " + super.getSueldo() +
+                ", Cantidad de partidos arbitrados : " + getCantDePartidosDirigidos() +
+                ", Años trabajados : " + getAnostrabajados() +
+                ", Sueldo con bonus: " + calcularSalario() +
                 '}';
     }
 }
