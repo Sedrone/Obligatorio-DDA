@@ -537,9 +537,8 @@ public class Main {
             System.out.println("\nGestión Partidos\n");
             System.out.println("1. Crear partido");
             System.out.println("2. Eliminar partido");
-            System.out.println("3. Modificar partido");
-            System.out.println("4. Mostrar partidos");
-            System.out.println("5. Salir");
+            System.out.println("3. Mostrar partidos");
+            System.out.println("4. Salir");
             System.out.print("\nSeleccione una opción: ");
 
             int opcion;
@@ -554,12 +553,9 @@ public class Main {
                         eliminarPartido();
                         break;
                     case 3:
-                        modificarPartido();
-                        break;
-                    case 4:
                         mostrarListaPartidos();
                         break;
-                    case 5:
+                    case 4:
                         salir = true;
                         break;
                     default:
@@ -809,7 +805,7 @@ public class Main {
         }
     }
 
-    static void modificarPartido() {
+    /*static void modificarPartido() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese la cedula del tecnico a modificar: ");
         int cedulaModificar = scanner.nextInt();
@@ -850,7 +846,7 @@ public class Main {
         } else {
             System.out.println("Cedula no encontrado. \n");
         }
-    }
+    }*/
 
     static void mostrarListaPartidos() {
         Scanner scanner = new Scanner(System.in);
