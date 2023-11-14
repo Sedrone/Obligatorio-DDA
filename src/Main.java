@@ -583,7 +583,7 @@ public class Main {
                     }
                     System.out.println("Ingrese la posicion en la lista del jugador a agregar");
                     int eleccion = scanner.nextInt() - 1 ;
-                    if (eleccion > jugadoresPosibleEquipo1.size() - 1 || eleccion < jugadoresPosibleEquipo1.size() - 1) {
+                    if (eleccion > jugadoresPosibleEquipo1.size() - 1) {
                         System.out.println("Ese jugador no existe");
                         i--;
                     } else {
@@ -637,8 +637,8 @@ public class Main {
                     if (eleccion > jugadoresPosibleEquipo2.size() -1) {
                         System.out.println("Ese jugador no existe");
                         i--;
-                    } else {jugadoresSeleccionadosEquipo2
-                            .add(jugadoresPosibleEquipo2.get(eleccion));
+                    } else {
+                        jugadoresSeleccionadosEquipo2.add(jugadoresPosibleEquipo2.get(eleccion));
                         jugadoresPosibleEquipo2.remove(eleccion);
                     }
                 }
