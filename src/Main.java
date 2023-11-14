@@ -98,13 +98,13 @@ public class Main {
 
     static void eliminarJugador() {
                 Scanner scanner = new Scanner(System.in);
+                System.out.println("Personas disponibles para eliminar");
+                    for (Jugador unJugador : listaJugadores) {
+                    System.out.println(unJugador.toString());
+                    }
                 System.out.print("Ingrese la cedula a eliminar: ");
                 int cedula = scanner.nextInt();
                 scanner.nextLine();
-                System.out.println("Personas disponibles para eliminar");
-                for (Jugador unJugador : listaJugadores) {
-                    System.out.println(unJugador.toString());
-                }
 
                 Jugador Jugadorcedula = null;
                 for (Jugador unJugador : listaJugadores) {
@@ -124,12 +124,13 @@ public class Main {
 
     static void modificarJugador() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la cedula del jugador a modificar: ");
-        int cedulaModificar = scanner.nextInt();
         System.out.println("Personas disponibles para modificar");
         for (Jugador unJugador : listaJugadores) {
             System.out.println(unJugador.toString());
         }
+        System.out.print("Ingrese la cedula del jugador a modificar: ");
+        int cedulaModificar = scanner.nextInt();
+
         scanner.nextLine();
 
         Jugador jugadorModificar = null;
@@ -182,37 +183,33 @@ public class Main {
         scanner.nextLine();
 
         switch (opcionBuscar) {
-            case 1:
+            case 1 -> {
                 System.out.println("Lista de Jugadores:");
                 for (Jugador unJugador : listaJugadores) {
                     System.out.println(unJugador.toString());
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 List<Jugador> listaJugadoresEquipo = new ArrayList<>();
                 System.out.print("Ingrese el nombre del equipo: ");
                 String nombre = scanner.nextLine();
                 scanner.nextLine();
-
                 for (Jugador unJugador : listaJugadores) {
                     if (unJugador.getEquipo().equals(nombre)) {
                         listaJugadoresEquipo.add(unJugador);
                     }
                 }
-
                 if (!listaJugadoresEquipo.isEmpty()) {
                     System.out.println("Jugadores del equipo: \n");
-                    for (Jugador unJugador: listaJugadoresEquipo ) {
+                    for (Jugador unJugador : listaJugadoresEquipo) {
                         System.out.println(unJugador.toString());
                     }
                     System.out.println();
                 } else {
                     System.out.println("No hay jugadores de ese equipo. \n");
                 }
-                break;
-            default:
-                System.out.println("Opción no válida. Intente de nuevo. \n");
-                break;
+            }
+            default -> System.out.println("Opción no válida. Intente de nuevo. \n");
         }
     }
 
@@ -273,13 +270,14 @@ public class Main {
 
     static void eliminarArbitro() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la cedula a eliminar: ");
-        int cedula = scanner.nextInt();
-        scanner.nextLine();
         System.out.println("Personas disponibles para eliminar");
         for (Arbitro unA : listaArbitros) {
             System.out.println(unA.toString());
         }
+        System.out.print("Ingrese la cedula a eliminar: ");
+        int cedula = scanner.nextInt();
+        scanner.nextLine();
+
 
         Arbitro ArbitroCedula = null;
         for (Arbitro unArbitro : listaArbitros) {
@@ -299,12 +297,13 @@ public class Main {
 
     static void modificarArbitro() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la cedula del arbitro a modificar: ");
-        int cedulaModificar = scanner.nextInt();
         System.out.println("Personas disponibles para modificar");
         for (Arbitro unA : listaArbitros) {
             System.out.println(unA.toString());
         }
+        System.out.print("Ingrese la cedula del arbitro a modificar: ");
+        int cedulaModificar = scanner.nextInt();
+
         scanner.nextLine();
 
         Arbitro arbitroMod = null;
@@ -407,13 +406,14 @@ public class Main {
 
     static void eliminarTecnico() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la cedula a eliminar: ");
-        int cedula = scanner.nextInt();
-        scanner.nextLine();
         System.out.println("Personas disponibles para eliminar");
         for (Tecnico unTec : listaTecnico) {
             System.out.println(unTec.toString());
         }
+        System.out.print("Ingrese la cedula a eliminar: ");
+        int cedula = scanner.nextInt();
+        scanner.nextLine();
+
 
         Tecnico TecnicoCedula = null;
         for (Tecnico unTecnico : listaTecnico) {
@@ -433,12 +433,13 @@ public class Main {
 
     static void modificarTecnico() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la cedula del tecnico a modificar: ");
-        int cedulaModificar = scanner.nextInt();
         System.out.println("Personas disponibles para modificar");
         for (Tecnico unTec : listaTecnico) {
             System.out.println(unTec.toString());
         }
+        System.out.print("Ingrese la cedula del tecnico a modificar: ");
+        int cedulaModificar = scanner.nextInt();
+
         scanner.nextLine();
 
         Tecnico TecnicoMod = null;
@@ -723,13 +724,14 @@ public class Main {
 
     static void eliminarPartido() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la id a eliminar: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
         System.out.println("Partidos disponibles para eliminar");
         for (Partido unP : listaPartidos) {
             System.out.println(unP.getId() + " " + unP.getFecha());
         }
+        System.out.print("Ingrese la id a eliminar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
 
         Partido PId = null;
         for (Partido unPartido : listaPartidos) {
