@@ -788,10 +788,14 @@ public class Main {
             System.out.print("Hora: ");
             String nuevohora = scanner.nextLine();
             scanner.nextLine();
+            System.out.print("Ganador: ");
+            String nuevoganador = scanner.nextLine();
+            scanner.nextLine();
             listaPartidos.remove(PartidoMod);
 
             PartidoMod.setFecha(nuevoFecha);
             PartidoMod.setHora(nuevohora);
+            PartidoMod.setGanador(nuevoganador);
 
             listaPartidos.add(PartidoMod);
         } else {
