@@ -28,24 +28,12 @@ public class Main {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
                 switch (opcion) {
-                    case 1:
-                        gestionJugador();
-                        break;
-                    case 2:
-                        gestionArbitro();
-                        break;
-                    case 3:
-                        gestionTecnicos();
-                        break;
-                    case 4:
-                        gestionPartidos();
-                        break;
-                    case 5:
-                        salir = true;
-                        break;
-                    default:
-                        System.out.println("Opción no válida. Intente de nuevo. \n");
-                        break;
+                    case 1 -> gestionJugador();
+                    case 2 -> gestionArbitro();
+                    case 3 -> gestionTecnicos();
+                    case 4 -> gestionPartidos();
+                    case 5 -> salir = true;
+                    default -> System.out.println("Opción no válida. Intente de nuevo. \n");
                 }
             }
         }
@@ -68,24 +56,12 @@ public class Main {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
                 switch (opcion) {
-                    case 1:
-                        agregarJugador();
-                        break;
-                    case 2:
-                        eliminarJugador();
-                        break;
-                    case 3:
-                        modificarJugador();
-                        break;
-                    case 4:
-                        mostrarListaJugador();
-                        break;
-                    case 5:
-                        salir = true;
-                        break;
-                    default:
-                        System.out.println("Opción no válida. Intente de nuevo. \n");
-                        break;
+                    case 1 -> agregarJugador();
+                    case 2 -> eliminarJugador();
+                    case 3 -> modificarJugador();
+                    case 4 -> mostrarListaJugador();
+                    case 5 -> salir = true;
+                    default -> System.out.println("Opción no válida. Intente de nuevo. \n");
                 }
             } else {
                 System.out.println("Entrada no válida. Intente de nuevo. \n");
@@ -257,24 +233,12 @@ public class Main {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
                 switch (opcion) {
-                    case 1:
-                        agregarArbitro();
-                        break;
-                    case 2:
-                        eliminarArbitro();
-                        break;
-                    case 3:
-                        modificarArbitro();
-                        break;
-                    case 4:
-                        mostrarListaArbitros();
-                        break;
-                    case 5:
-                        salir = true;
-                        break;
-                    default:
-                        System.out.println("Opción no válida. Intente de nuevo. \n");
-                        break;
+                    case 1 -> agregarArbitro();
+                    case 2 -> eliminarArbitro();
+                    case 3 -> modificarArbitro();
+                    case 4 -> mostrarListaArbitros();
+                    case 5 -> salir = true;
+                    default -> System.out.println("Opción no válida. Intente de nuevo. \n");
                 }
             } else {
                 System.out.println("Entrada no válida. Intente de nuevo. \n");
@@ -404,24 +368,12 @@ public class Main {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
                 switch (opcion) {
-                    case 1:
-                        agregarTecnico();
-                        break;
-                    case 2:
-                        eliminarTecnico();
-                        break;
-                    case 3:
-                        modificarTecnico();
-                        break;
-                    case 4:
-                        mostrarListaTecnicos();
-                        break;
-                    case 5:
-                        salir = true;
-                        break;
-                    default:
-                        System.out.println("Opción no válida. Intente de nuevo. \n");
-                        break;
+                    case 1 -> agregarTecnico();
+                    case 2 -> eliminarTecnico();
+                    case 3 -> modificarTecnico();
+                    case 4 -> mostrarListaTecnicos();
+                    case 5 -> salir = true;
+                    default -> System.out.println("Opción no válida. Intente de nuevo. \n");
                 }
             } else {
                 System.out.println("Entrada no válida. Intente de nuevo. \n");
@@ -537,8 +489,9 @@ public class Main {
             System.out.println("\nGestión Partidos\n");
             System.out.println("1. Crear partido");
             System.out.println("2. Eliminar partido");
-            System.out.println("3. Mostrar partidos");
-            System.out.println("4. Salir");
+            System.out.println("3. Modificar partidos");
+            System.out.println("4. Mostrar partidos");
+            System.out.println("5. Salir");
             System.out.print("\nSeleccione una opción: ");
 
             int opcion;
@@ -546,21 +499,12 @@ public class Main {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
                 switch (opcion) {
-                    case 1:
-                        agregarPartido();
-                        break;
-                    case 2:
-                        eliminarPartido();
-                        break;
-                    case 3:
-                        mostrarListaPartidos();
-                        break;
-                    case 4:
-                        salir = true;
-                        break;
-                    default:
-                        System.out.println("Opción no válida. Intente de nuevo. \n");
-                        break;
+                    case 1 -> agregarPartido();
+                    case 2 -> eliminarPartido();
+                    case 3 -> modificarPartido();
+                    case 4 -> mostrarListaPartidos();
+                    case 5 -> salir = true;
+                    default -> System.out.println("Opción no válida. Intente de nuevo. \n");
                 }
             } else {
                 System.out.println("Entrada no válida. Intente de nuevo. \n");
@@ -625,18 +569,18 @@ public class Main {
                         contador++;
                     }
                     System.out.println("Ingrese la posicion en la lista del jugador a agregar");
-                    int eleccion = scanner.nextInt();
-                    if (eleccion > jugadoresPosibleEquipo1.size() || eleccion < jugadoresPosibleEquipo1.size()) {
+                    int eleccion = scanner.nextInt() - 1 ;
+                    if (eleccion > jugadoresPosibleEquipo1.size() - 1 || eleccion < jugadoresPosibleEquipo1.size() - 1) {
                         System.out.println("Ese jugador no existe");
                         i--;
                     } else {
-                        jugadoresSeleccionadosEquipo1.add(jugadoresPosibleEquipo1.get(eleccion - 1));
-                        jugadoresPosibleEquipo1.remove(eleccion - 1);
+                        jugadoresSeleccionadosEquipo1.add(jugadoresPosibleEquipo1.get(eleccion));
+                        jugadoresPosibleEquipo1.remove(eleccion);
                     }
                 }
                 System.out.println("Los titulares del equipo " + equipo1 +  " son: ");
                 int contador = 1;
-                for (Jugador unJ : jugadoresPosibleEquipo1) {
+                for (Jugador unJ : jugadoresSeleccionadosEquipo1) {
                     System.out.println(contador + ". " + unJ.getNombre() + " " + unJ.getApellido());
                     contador++;
                 }
@@ -676,18 +620,18 @@ public class Main {
                         contador++;
                     }
                     System.out.println("Ingrese la posicion en la lista del jugador a agregar");
-                    int eleccion = scanner.nextInt();
-                    if (eleccion > jugadoresPosibleEquipo2.size() || eleccion < jugadoresPosibleEquipo2.size()) {
+                    int eleccion = scanner.nextInt() -1;
+                    if (eleccion > jugadoresPosibleEquipo2.size() -1) {
                         System.out.println("Ese jugador no existe");
                         i--;
                     } else {jugadoresSeleccionadosEquipo2
-                            .add(jugadoresPosibleEquipo2.get(eleccion - 1));
-                        jugadoresPosibleEquipo2.remove(eleccion - 1);
+                            .add(jugadoresPosibleEquipo2.get(eleccion));
+                        jugadoresPosibleEquipo2.remove(eleccion);
                     }
                 }
                 System.out.println("Los titulares del equipo " + equipo2 +  " son: ");
                 contador = 1;
-                for (Jugador unJ : jugadoresPosibleEquipo2) {
+                for (Jugador unJ : jugadoresSeleccionadosEquipo2) {
                     System.out.println(contador + ". " + unJ.getNombre() + " " + unJ.getApellido());
                     contador++;
                 }
@@ -763,16 +707,14 @@ public class Main {
                         true2 = true;
                     }
                 }
-                String fechaYHora = fecha.trim() + " " + Hora.trim();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                LocalDateTime dateTime = LocalDateTime.parse(fechaYHora, formatter);
                 Arbitro arbitroP = null;
                 for (Arbitro unB: listaArbitros) {
                     if (unB.getCedula() == arbitro){
                         arbitroP = unB;
                     }
                 }
-                Partido unP = new Partido(id, dateTime, equipo1, equipo2, ganador, arbitroP, tEquipo1, tEquipo2, jugadoresSeleccionadosEquipo1, jugadoresSeleccionadosEquipo2);
+                Partido unP = new Partido(id, fecha, equipo1, equipo2, ganador, arbitroP, tEquipo1, tEquipo2, jugadoresSeleccionadosEquipo1, jugadoresSeleccionadosEquipo2, Hora);
+                listaPartidos.add(unP);
                 System.out.println("Partido ingresado con exito");
             }
         }
@@ -805,48 +747,41 @@ public class Main {
         }
     }
 
-    /*static void modificarPartido() {
+    static void modificarPartido() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese la cedula del tecnico a modificar: ");
-        int cedulaModificar = scanner.nextInt();
-        System.out.println("Personas disponibles para modificar");
-        for (Tecnico unTec : listaTecnico) {
-            System.out.println(unTec.toString());
+        System.out.println("Partidos disponibles para modificar");
+        for (Partido unP: listaPartidos) {
+            System.out.println(unP.toString());
         }
+        System.out.print("Ingrese la id del partido a modificar: ");
+        int cedulaModificar = scanner.nextInt();
         scanner.nextLine();
 
-        Tecnico TecnicoMod = null;
-        for (Tecnico unTec : listaTecnico) {
-            if (unTec.getCedula() == cedulaModificar) {
-                TecnicoMod = unTec;
+        Partido PartidoMod = null;
+        for (Partido unP : listaPartidos) {
+            if (unP.getId() == cedulaModificar) {
+                PartidoMod = unP;
                 break;
             }
         }
 
-        if (TecnicoMod != null) {
-            System.out.println("Datos actuales del Tecnico: " + TecnicoMod.toString());
+        if (PartidoMod != null) {
+            System.out.println("Datos actuales del Partido: " + PartidoMod.toString());
             System.out.println("Ingrese los nuevos datos:");
-            System.out.print("Nombre: ");
-            String nuevoNombre = scanner.nextLine();
-            System.out.print("Apellido: ");
-            String nuevoApellido = scanner.nextLine();
-            System.out.print("Sueldo: ");
-            double nuevaSueldo = scanner.nextDouble();
-            System.out.print("Equipo: ");
-            String nuevoEquipo = scanner.nextLine();
-            scanner.nextLine();
-            listaTecnico.remove(TecnicoMod);
+            System.out.print("Fecha: ");
+            String nuevoFecha = scanner.nextLine();
+            System.out.print("Hora: ");
+            String nuevohora = scanner.nextLine();
+            listaPartidos.remove(PartidoMod);
 
-            TecnicoMod.setNombre(nuevoNombre);
-            TecnicoMod.setApellido(nuevoApellido);
-            TecnicoMod.setSueldo(nuevaSueldo);
-            TecnicoMod.setEquipo(nuevoEquipo);
+            PartidoMod.setFecha(nuevoFecha);
+            PartidoMod.setHora(nuevohora);
 
-            listaTecnico.add(TecnicoMod);
+            listaPartidos.add(PartidoMod);
         } else {
-            System.out.println("Cedula no encontrado. \n");
+            System.out.println("Id no encontrado. \n");
         }
-    }*/
+    }
 
     static void mostrarListaPartidos() {
         Scanner scanner = new Scanner(System.in);

@@ -5,7 +5,9 @@ import java.util.List;
 public class Partido {
     private int Id;
 
-    private LocalDateTime fecha;
+    private String fecha;
+
+    private String Hora;
 
     private String equipo1;
 
@@ -38,11 +40,11 @@ public class Partido {
         this.equipo1 = equipo1;
     }
 
-    public LocalDateTime getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -106,7 +108,8 @@ public class Partido {
     public String toString() {
         return "Partido: " + '\'' +
                 "Id: " + Id + '\'' +
-                ", Fecha: " + fecha.format(DateTimeFormatter.ISO_LOCAL_DATE) + '\'' +
+                ", Fecha: " + fecha + '\'' +
+                ", Hora: " + Hora + '\'' +
                 ", Equipo 1: " + equipo1 + '\'' +
                 ", Equipo 2: " + equipo2 + '\'' +
                 ", Ganador: " + ganador + '\'' +
@@ -115,9 +118,18 @@ public class Partido {
                 ", Tecnico del equipo 2: " + TecEquipo2.toString();
     }
 
-    public Partido(int id, LocalDateTime fecha, String equipo1, String equipo2, String ganador, Arbitro arbitro, Tecnico tecEquipo1, Tecnico tecEquipo2, List<Jugador> listaJugadoresEquipo1, List<Jugador> listaJugadoresEquipo2) {
+    public String getHora() {
+        return Hora;
+    }
+
+    public void setHora(String hora) {
+        Hora = hora;
+    }
+
+    public Partido(int id, String fecha, String equipo1, String equipo2, String ganador, Arbitro arbitro, Tecnico tecEquipo1, Tecnico tecEquipo2, List<Jugador> listaJugadoresEquipo1, List<Jugador> listaJugadoresEquipo2, String hora) {
         Id = id;
         this.fecha = fecha;
+        this.Hora = hora;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.ganador = ganador;
