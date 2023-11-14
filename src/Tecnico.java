@@ -6,7 +6,7 @@ public class Tecnico extends Persona implements Salario{
     }
 
     public void setEquipo(String equipo) {
-        this.equipo = equipo;
+        this.equipo = equipo.toUpperCase();
     }
 
     public Tecnico(int cedula, String nombre, String apellido, double sueldo, String equipo) {

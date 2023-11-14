@@ -37,7 +37,7 @@ public class Partido {
     }
 
     public void setEquipo1(String equipo1) {
-        this.equipo1 = equipo1;
+        this.equipo1 = equipo1.toUpperCase();
     }
 
     public String getFecha() {
@@ -53,7 +53,7 @@ public class Partido {
     }
 
     public void setEquipo2(String equipo2) {
-        this.equipo2 = equipo2;
+        this.equipo2 = equipo2.toUpperCase();
     }
 
     public String getGanador() {
@@ -130,8 +130,8 @@ public class Partido {
         Id = id;
         this.fecha = fecha;
         this.Hora = hora;
-        this.equipo1 = equipo1;
-        this.equipo2 = equipo2;
+        this.equipo1 = equipo1.toUpperCase();
+        this.equipo2 = equipo2.toUpperCase();
         this.ganador = ganador;
         this.arbitro = arbitro;
         this.TecEquipo1 = tecEquipo1;

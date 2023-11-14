@@ -16,7 +16,7 @@ public class Jugador extends Persona implements Precalentar, Salario{
     }
 
     public void setEquipo(String equipo) {
-        this.equipo = equipo;
+        this.equipo = equipo.toUpperCase();
     }
 
     public int getMinutosJugados() {
